@@ -1,0 +1,6 @@
+/usr/local/spark-3/bin/spark-submit --name "dataCompare" --files hdfs.krb5.conf#hdfs.krb5.conf,/etc/security/keytabs/aibdp-realtime-process.keytab#aibdp-realtime-process.keytab --conf "spark.driver.extraJavaOptions=-Djava.security.krb5.conf=./hdfs.krb5.conf" --conf "spark.executor.extraJavaOptions=-Djava.security.krb5.conf=./hdfs.krb5.conf"  --class com.ctyun.test.Main --master yarn --deploy-mode cluster --driver-memory 4g --executor-memory 16g --executor-cores 8 --num-executors 3 --queue op StreamingDataCompare-jar-with-dependencies.jar
+
+
+java  -Djava.security.krb5.conf=/Users/xutao/project/_work/StreamingDataCompare/src/main/resources/krb5_2.conf  -jar /Users/xutao/project/_work/StreamingDataCompare/target/StreamingDataCompare-1.0-SNAPSHOT.jar testUser1@EXAMPLE.COM /Users/xutao/testUser1.keytab
+
+java  -Djava.security.krb5.conf=/home/dw_test/aibdp-realtime-process/hdfs.krb5.conf -jar StreamingDataCompare-1.0-SNAPSHOT.jar aibdp-realtime-process/nm-bigdata-030089045.ctc.local@EWS.BIGDATA.CHINATELECOM.CN /etc/security/keytabs/aibdp-realtime-process.keytab hdfs.conf
